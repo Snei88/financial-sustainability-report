@@ -1,30 +1,28 @@
-import React from 'react';
+import React from "react";
 
-/**
- * StatCard.tsx
- * Componente simple para mostrar una métrica o estadística destacada dentro de una tarjeta.
- * Ejemplos de uso: número total, porcentaje, valor KPI con un pequeño texto explicativo.
- */
-interface StatCardProps {
-  title: string;
+type StatCardProps = {
+  title?: string;
+  className?: string;
   children: React.ReactNode;
-}
+};
 
-/**
- * StatCard
- * - title: encabezado de la métrica
- * - children: contenido principal (número grande, iconos, comparativas, etc.)
- *
- * Este componente es puramente presentacional y no gestiona estado.
- */
-export const StatCard: React.FC<StatCardProps> = ({ title, children }) => {
+export const StatCard: React.FC<StatCardProps> = ({ title, className, children }) => {
   return (
-    <div className="bg-white p-6 rounded-xl border-2 border-lime-400 shadow-lg shadow-lime-500/20 hover:shadow-xl hover:shadow-lime-500/40 transition-shadow duration-300">
-      {/* Encabezado de la tarjeta */}
-      <h3 className="text-lg font-semibold text-gray-700 mb-4">{title}</h3>
-
-      {/* Contenido: normalmente un número grande o pequeñas visualizaciones */}
-      <div>{children}</div>
-    </div>
+    <section
+      className={[
+        // Contenedor principal
+        "rounded-2xl bg-white",
+        // Borde y halo AZUL
+        "border border-blue-300",
+        "ring-1 ring-blue-100",
+        // Sombra azul suave (custom rgba para un look pro)
+        "shadow-[0_10px_28px_rgba(29,78,216,0.18)]",
+        "p-5",
+        className || "",
+      ].join(" ")}
+    >
+      {title ? <h3 className="text-lg font-semibold mb-3">{title}</h3> : null}
+      {children}
+    </section>
   );
 };

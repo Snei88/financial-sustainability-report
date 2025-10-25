@@ -1,116 +1,149 @@
 import React from 'react';
 import { StatCard } from '../components/StatCard';
-import { DataTable } from '../components/DataTable';
-import { Landmark, Users, Briefcase, Scale, Building, Handshake, Accessibility, HandHelping, PersonStanding, Sun } from 'lucide-react';
+import {
+  Landmark, Users, Scale,
+  DollarSign, TrendingUp, PiggyBank, Briefcase
+} from 'lucide-react';
+import {
+  ResponsiveContainer, BarChart, Bar, XAxis, YAxis,
+  CartesianGrid, Tooltip, Label, LabelList, Cell
+} from 'recharts';
 
-/**
- * GeneralContext.tsx
- * Sección que resume el contexto general y económico utilizado en el dashboard.
- * Contiene explicaciones conceptuales (texto) y una tabla comparativa de ingreso percápita.
- */
+/** Formatea con 1 decimal y agrega " B" (billones) */
+const formatWithB = (value: number) => `${value.toFixed(1)} B`;
 
-/**
- * Función auxiliar para formatear números según la localización 'es-CO' (miles sin decimales).
- */
-const formatNumber = (value: number) => {
-    return new Intl.NumberFormat('es-CO', {
-        maximumFractionDigits: 0
-    }).format(value);
-};
+/** Formatea números es-CO sin decimales (cuando se requiera) */
+const formatNumber = (value: number) =>
+  new Intl.NumberFormat('es-CO', { maximumFractionDigits: 0 }).format(value);
 
-// Encabezados y filas de ejemplo para la tabla de ingreso per cápita
-const perCapitaHeaders = ["Ciudad", "Presupuesto (2025) (Millones COP)", "Habitantes (2025)", "$ por habitante"];
-const perCapitaRows = [
-    ["Bogotá", formatNumber(38432743), formatNumber(8380801), formatNumber(4585808)],
-    ["Medellín", formatNumber(10958243), formatNumber(2569007), formatNumber(4265556)],
-    ["Cali", formatNumber(5887095), formatNumber(2946346), formatNumber(1998100)],
-    ["Barranquilla", formatNumber(6722965), formatNumber(1239804), formatNumber(5422603)],
-];
-
-/**
- * GeneralContext - componente funcional
- * - Renderiza un título principal, varias tarjetas de estadísticas y una tabla comparativa.
- * - Está pensado como sección estática/presentacional dentro del dashboard.
- */
 export const GeneralContext: React.FC = () => {
-    return (
-        <div>
-            <h2 className="text-3xl font-bold text-gradient mb-8">Contexto General y Económico</h2>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-                <div className="lg:col-span-3 space-y-8">
-                    {/* Tarjeta explicativa sobre el rol del sector público */}
-                    <StatCard title="El Papel del Sector Público">
-                        <div className="flex items-start space-x-4">
-                            <Scale className="text-purple-500 flex-shrink-0 mt-1" size={32} />
-                            <div>
-                                <ul className="list-disc pl-5 space-y-2 text-gray-600">
-                                    <li>En una economía de dos sectores (familias y empresas), los precios de mercado de servicios básicos como salud y educación no son asequibles para todas las familias.</li>
-                                    <li>El sector público nace para garantizar el acceso universal a estos servicios esenciales.</li>
-                                    <li>Para lograrlo, se subsidian los estratos socioeconómicos 1, 2 y 3.</li>
-                                    <li>El estado actua como gestor, inversor y regulador de la economia, con el proposito de garantizar sostenibilidad social, ambiental y economica.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </StatCard>
+  // Datos base (billones y millones expresados como números ya escalados)
+  const data = [
+    { ciudad: 'Bogotá',       icon: <DollarSign size={18} color="#1D4ED8" />, presupuesto: 38.4, habitantes: 8.4, perCapita: 4.58 },
+    { ciudad: 'Medellín',     icon: <TrendingUp size={18} color="#0D9488" />, presupuesto: 11.0, habitantes: 2.6, perCapita: 4.21 },
+    { ciudad: 'Cali',         icon: <PiggyBank size={18} color="#10B981" />, presupuesto: 5.9,  habitantes: 2.3, perCapita: 2.58 },
+    { ciudad: 'Barranquilla', icon: <Briefcase size={18} color="#65A30D" />, presupuesto: 6.9,  habitantes: 2.4, perCapita: 5.17 },
+  ];
 
-                    {/* Tabla comparativa: ingreso per cápita por ciudad (datos de ejemplo) */}
-                    <DataTable title="Ingreso Percápita Comparativo (2025)" headers={perCapitaHeaders} rows={perCapitaRows} />
-                </div>
+  return (
+    <div>
+      <h2 className="text-3xl font-bold text-gradient mb-8">
+        Contexto General y Económico
+      </h2>
 
-                <div className="lg:col-span-2">
-                     {/* Tarjeta visual que representa relaciones entre actores (familias, empresas, estado) */}
-                     <StatCard title="El Estado y las Finanzas Públicas">
-                        <div className="relative h-[450px] flex items-center justify-center">
-                            <div className="absolute w-48 h-48 bg-red-400/30 rounded-full top-10 left-4"></div>
-                            <div className="absolute w-48 h-48 bg-blue-400/30 rounded-full top-10 right-4"></div>
-                            <div className="absolute w-48 h-48 bg-green-400/30 rounded-full bottom-10"></div>
-                            
-                            <div className="absolute top-20 left-10 text-center">
-                                <Users size={32} className="mx-auto text-red-700"/>
-                                <p className="font-semibold text-sm">Familias</p>
-                            </div>
-                            <div className="absolute top-20 right-10 text-center">
-                                <Building size={32} className="mx-auto text-blue-700"/>
-                                <p className="font-semibold text-sm">Empresas</p>
-                            </div>
-                            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-10 p-3 bg-white/50 backdrop-blur-sm rounded-full">
-                                <Landmark size={40} className="mx-auto text-gray-800"/>
-                                <p className="font-bold text-xs">ESTADO</p>
-                                <p className="text-xs">Regulador</p>
-                                <p className="text-xs">Distribuidor</p>
-                                <p className="text-xs">Inversor</p>
-                            </div>
-                             <div className="absolute top-[130px] left-1/2 transform -translate-x-1/2 text-center">
-                               <Handshake size={28} className="mx-auto text-cyan-600" />
-                            </div>
-                             <div className="absolute bottom-[160px] left-[70px] text-center">
-                               <Accessibility size={28} className="mx-auto text-purple-600" />
-                               <p className="font-semibold text-xs text-purple-700">Oportunidades<br/>Equitativas</p>
-                            </div>
-                             <div className="absolute bottom-[160px] right-[70px] text-center">
-                               <HandHelping size={28} className="mx-auto text-emerald-600" />
-                                <p className="font-semibold text-xs text-emerald-700">Responsabilidad<br/>Social</p>
-                            </div>
-                             <div className="absolute bottom-16 text-center">
-                                <div className="flex justify-center items-center gap-2">
-                                  <PersonStanding size={24} className="text-orange-600"/>
-                                  <Sun size={20} className="text-orange-500" />
-                                </div>
-                                <p className="font-semibold text-xs text-orange-700 mt-5">Desarrollo - Sostenibilidad<br/>Social, Ambiental y Económica</p>
-                            </div>
-                        </div>
-                    </StatCard>
-                </div>
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+        {/* --- COLUMNA IZQUIERDA --- */}
+        <div className="lg:col-span-3 space-y-8">
+          {/* Tarjeta explicativa */}
+          <StatCard title="El Papel del Sector Público">
+            <div className="flex items-start space-x-4">
+              <Scale className="text-purple-500 flex-shrink-0 mt-1" size={32} />
+              <div>
+                <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                  <li>En una economía de dos sectores (familias y empresas), los precios de servicios básicos como salud y educación pueden no ser asequibles para todos.</li>
+                  <li>El sector público garantiza el acceso universal a servicios esenciales.</li>
+                  <li>Para ello, subsidia a los estratos 1, 2 y 3, priorizando la equidad.</li>
+                  <li>El Estado actúa como gestor, inversor y regulador para asegurar sostenibilidad social, ambiental y económica.</li>
+                </ul>
+              </div>
             </div>
+          </StatCard>
 
-            <div className="mt-8">
-                <StatCard title="Visión Estratégica del Distrito">
-                    <p className="text-gray-600">
-                        El plan financiero del Distrito de Santiago de Cali se fundamenta en principios de sostenibilidad fiscal, eficiencia en el gasto y fortalecimiento de los ingresos propios. Las proyecciones macroeconómicas favorables, junto con una gestión prudente de la deuda, sientan las bases para un crecimiento sostenido y una mayor capacidad de inversión en proyectos estratégicos que impulsen el desarrollo social y económico de la ciudad.
-                    </p>
-                </StatCard>
+          {/* --- GRÁFICO DE INGRESO PERCÁPITA --- */}
+          <StatCard title="Ingreso Percápita de las Principales Ciudades de Colombia (2025)">
+            <div className="h-[380px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart
+                  data={data.map(d => ({ name: d.ciudad, perCapita: d.perCapita, icon: d.icon }))}
+                  margin={{ top: 30, right: 20, left: 8, bottom: 20 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                  <XAxis
+                    dataKey="name"
+                    tickLine={false}
+                    axisLine={{ stroke: '#93C5FD' }}
+                    tick={{ fill: '#374151', fontSize: 12 }}
+                  >
+                    <Label value="Ciudad" offset={10} position="bottom" />
+                  </XAxis>
+                  <YAxis
+                    tickLine={false}
+                    axisLine={{ stroke: '#93C5FD' }}
+                    tick={{ fill: '#374151', fontSize: 12 }}
+                    tickFormatter={(v: number) => `${v.toFixed(2)}$`}
+                  >
+                    <Label
+                      value="Ingreso Percápita"
+                      angle={-90}
+                      position="insideLeft"
+                      offset={-2}
+                      style={{ fill: '#374151' }}
+                    />
+                  </YAxis>
+
+                  <Tooltip
+                    cursor={{ fill: 'rgba(59,130,246,0.08)' }}
+                    formatter={(v: number) => [`${v.toFixed(2)}$`, 'Ingreso Percápita']}
+                    labelFormatter={(l) => `Ciudad: ${l}`}
+                  />
+
+                  <Bar dataKey="perCapita" radius={[6, 6, 0, 0]}>
+                    <LabelList
+                      dataKey="icon"
+                      position="top"
+                      content={(props) => {
+                        const { x, y, value } = props;
+                        if (x == null || y == null) return null;
+                        return (
+                          <foreignObject x={x + 8} y={y - 30} width={30} height={30}>
+                            <div className="flex items-center justify-center">{value}</div>
+                          </foreignObject>
+                        );
+                      }}
+                    />
+                    <LabelList
+                      dataKey="perCapita"
+                      position="top"
+                      formatter={(v: number) => `${v.toFixed(2)}$`}
+                      style={{ fill: '#1F2937', fontWeight: 600 }}
+                      offset={20}
+                    />
+                    {data.map((d, i) => (
+                      <Cell
+                        key={d.ciudad}
+                        fill={['#BFDBFE', '#A7F3FC', '#A7F3D0', '#D9F99D'][i % 4]}
+                      />
+                    ))}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
             </div>
+          </StatCard>
         </div>
-    );
-}
+
+        {/* --- COLUMNA DERECHA --- */}
+        <div className="lg:col-span-2">
+          {/* Aquí reemplazamos el SVG por la imagen */}
+          <StatCard title="El Estado y las Finanzas Públicas">
+            <div className="flex justify-center items-center">
+              <img
+                src="/assets/imagen.png"
+                alt="Diagrama El Estado y las Finanzas Públicas"
+                className="rounded-xl shadow-md border border-gray-200 max-h-[500px] object-contain"
+              />
+            </div>
+          </StatCard>
+        </div>
+      </div>
+
+      {/* --- VISIÓN ESTRATÉGICA --- */}
+      <div className="mt-8">
+        <StatCard title="Visión Estratégica del Distrito">
+          <p className="text-gray-700">
+            La Sostenibilidad Fiscal para las entidades territoriales requiere finanzas equilibradas con una buena gestión tributaria, eficiencia en el gasto. La estabilidad en el mediano plazo implica una gestión eficiente de las fuentes de financiación incluidos los recursos del crédito. Para lograr avanzar en términos de sostenibilidad se requiere robustecer la capacidad de inversión de proyectos estratégicos para la ciudad.
+          </p>
+        </StatCard>
+      </div>
+    </div>
+  );
+};
