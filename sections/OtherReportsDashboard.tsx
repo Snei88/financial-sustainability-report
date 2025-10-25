@@ -37,7 +37,7 @@ const contingentLiabilitiesRows = [
 export const OtherReportsDashboard: React.FC = () => {
     return (
         <div>
-            <h2 className="text-3xl font-bold text-gradient mb-6">Otros Reportes Financieros</h2>
+            <h2 className="text-3xl font-bold mb-8 text-[#0A2A6A]">Otros Reportes Financieros</h2>
 
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
                 <div className="flex flex-col">
@@ -82,7 +82,7 @@ export const OtherReportsDashboard: React.FC = () => {
             </div>
 
             <div className="mt-12">
-                <h3 className="text-2xl font-semibold text-gradient mb-6">Proyectos Estratégicos</h3>
+                <h3 className="text-2xl font-semibold mb-6 bg-gradient-to-r from-[#0A2A6A] to-[#1348A2] bg-clip-text text-transparent">Proyectos Estratégicos</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <StatCard title="Tren de Cercanías - Inversión y Financiación">
                         <p>La inversión total se estima en <strong className="text-purple-600">12 billones de pesos</strong>.</p>

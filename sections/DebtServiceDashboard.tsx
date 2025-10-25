@@ -102,7 +102,7 @@ const TooltipContent = ({ active, payload, label }: any) => {
 export const DebtServiceDashboard: React.FC = () => {
   return (
     <div>
-      <h2 className="text-3xl font-bold text-gradient mb-6">Análisis del Servicio de la Deuda</h2>
+      <h2 className="text-3xl font-bold mb-8 text-[#0A2A6A]">Análisis del Servicio de la Deuda</h2>
       <p className="text-lg text-gray-600 mb-8 max-w-4xl">
         Esta sección detalla la estructura, evolución y proyecciones del servicio de la deuda del Distrito, un componente clave para la sostenibilidad fiscal a largo plazo.
       </p>

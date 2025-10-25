@@ -130,7 +130,7 @@ export const FiscalPerformanceDashboard: React.FC = () => {
 
     return (
         <div>
-            <h2 className="text-3xl font-bold text-gradient mb-6">Índice de Desempeño Fiscal (DNP)</h2>
+            <h2 className="text-3xl font-bold mb-8 text-[#0A2A6A]">Índice de Desempeño Fiscal (DNP)</h2>
             
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
                 <div className="xl:col-span-2">

@@ -66,7 +66,7 @@ const transfersRows = [
 export const DecentralizedSectorDashboard: React.FC = () => {
     return (
         <div>
-            <h2 className="text-3xl font-bold text-gradient mb-6">Análisis del Sector Descentralizado</h2>
+            <h2 className="text-3xl font-bold mb-8 text-[#0A2A6A]">Análisis del Sector Descentralizado</h2>
             <p className="text-lg text-gray-600 mb-8 max-w-4xl">
                 Revisión del desempeño financiero y las transferencias entre el nivel central y las principales entidades descentralizadas del Distrito.
             </p>

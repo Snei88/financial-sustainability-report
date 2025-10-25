@@ -176,7 +176,7 @@ const TooltipContentNumbers = ({ active, payload, label }: any) => {
 export const FinancialPlanDashboard: React.FC = () => {
   return (
     <div>
-      <h2 className="text-3xl font-bold text-gradient mb-6">Plan Financiero y Proyecciones</h2>
+      <h2 className="text-3xl font-bold mb-8 text-[#0A2A6A]">Plan Financiero y Proyecciones</h2>
       
       <DataTable title="Resumen Plan Financiero 2026-2036 (Cifras en millones de pesos)" headers={financialPlanHeaders} rows={financialPlanRows} />
       

@@ -10,7 +10,7 @@ import { TrendingUp, Building, Users, Ship, Anchor, Droplets, Smile, Briefcase, 
 export const MacroeconomicContext: React.FC = () => {
     return (
         <div>
-            <h2 className="text-3xl font-bold text-gradient mb-6">Contexto Macroeconómico Distrital (Q2 2025)</h2>
+            <h2 className="text-3xl font-bold mb-8 text-[#0A2A6A]">Panorama Economico Distrito de Santiago de Cali</h2>
 
             {/* Fila principal con indicadores clave: crecimiento, desempleo e inflación */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

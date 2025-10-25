@@ -101,7 +101,7 @@ const TooltipContent = ({ active, payload, label }: any) => {
 export const ExpensesDashboard: React.FC = () => {
   return (
     <div>
-      <h2 className="text-3xl font-bold text-gradient mb-6">Análisis de Gastos 2019-2024</h2>
+      <h2 className="text-3xl font-bold mb-8 text-[#0A2A6A]">Análisis de Gastos 2019-2024</h2>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <ChartCard title="Evolución del Gasto Total" description="Cifras en millones de pesos.">

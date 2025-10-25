@@ -25,7 +25,7 @@ interface ChartCardProps {
  */
 export const ChartCard: React.FC<ChartCardProps> = ({ title, description, children }) => {
   return (
-    <div className="bg-white rounded-xl border-2 border-lime-400 shadow-lg shadow-lime-500/20 hover:shadow-xl hover:shadow-lime-500/40 transition-shadow duration-300 p-6">
+    <div className="bg-white rounded-xl border-2 border-[#0A2A6A] shadow-lg shadow-lime-500/20 hover:shadow-xl hover:shadow-lime-500/40 transition-shadow duration-300 p-6">
       {/* Cabecera: título y descripción opcional */}
       <div>
         <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
