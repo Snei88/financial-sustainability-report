@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Sidebar } from './components/Sidebar';
-import { LayoutDashboard, Wallet, TrendingUp, Landmark, BarChart3, FileText, Menu, X, Globe, Banknote, Building } from 'lucide-react';
+import {
+  LayoutDashboard, Wallet, TrendingUp, Landmark, BarChart3,
+  FileText, Menu, X, Globe, Banknote, Building
+} from 'lucide-react';
 import { IncomeDashboard } from './sections/IncomeDashboard';
 import { ExpensesDashboard } from './sections/ExpensesDashboard';
 import { FiscalPerformanceDashboard } from './sections/FiscalPerformanceDashboard';
@@ -10,8 +13,18 @@ import { OtherReportsDashboard } from './sections/OtherReportsDashboard';
 import { MacroeconomicContext } from './sections/MacroeconomicContext';
 import { DebtServiceDashboard } from './sections/DebtServiceDashboard';
 import { DecentralizedSectorDashboard } from './sections/DecentralizedSectorDashboard';
+import FullscreenToggle from './components/FullscreenToggle';
 
-type Section = 'context' | 'macroeconomic' | 'income' | 'expenses' | 'performance' | 'plan' | 'debt' | 'decentralized' | 'other';
+type Section =
+  | 'context'
+  | 'macroeconomic'
+  | 'income'
+  | 'expenses'
+  | 'performance'
+  | 'plan'
+  | 'debt'
+  | 'decentralized'
+  | 'other';
 
 const sectionComponents: Record<Section, React.FC> = {
   context: GeneralContext,
@@ -43,17 +56,22 @@ const App: React.FC = () => {
 
   const handleSelectSection = (section: Section) => {
     setActiveSection(section);
-    if (window.innerWidth < 768) {
-      setSidebarOpen(false);
-    }
+    if (window.innerWidth < 768) setSidebarOpen(false);
   };
 
   const ActiveComponent = sectionComponents[activeSection];
 
   return (
     <div className="flex h-screen bg-white font-sans">
+      {/* Botón flotante de modo presentación (F11-like).
+          Aplica fullscreen SOLO sobre el <main id="presentation-root"> */}
+      <FullscreenToggle targetId="presentation-root" />
+
       <div className="fixed top-0 left-0 z-30 md:hidden">
-        <button onClick={() => setSidebarOpen(!isSidebarOpen)} className="p-4 text-gray-600">
+        <button
+          onClick={() => setSidebarOpen(!isSidebarOpen)}
+          className="p-4 text-gray-600"
+        >
           {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -66,7 +84,11 @@ const App: React.FC = () => {
         setIsOpen={setSidebarOpen}
       />
 
-      <main className="flex-1 overflow-y-auto transition-all duration-300 md:ml-64">
+      {/* El contenido central es el que entra a pantalla completa */}
+      <main
+        id="presentation-root"
+        className="flex-1 overflow-y-auto transition-all duration-300 md:ml-64"
+      >
         <div className="p-4 md:p-8 mt-12 md:mt-0 animate-fadeIn">
           <ActiveComponent key={activeSection} />
         </div>
