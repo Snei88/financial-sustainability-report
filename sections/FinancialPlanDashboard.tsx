@@ -241,10 +241,10 @@ export const FinancialPlanDashboard: React.FC = () => {
       </div>
 
       <div className="mt-8 space-y-8">
-        <h3 className="text-2xl font-bold text-gradient mb-2">Detalles Adicionales del Plan Financiero</h3>
+        <h3 className="text-2xl font-bold text-[#0A2A6A] mb-2">Detalles Adicionales del Plan Financiero</h3>
         <DataTable title="Ejecución Servicio de la Deuda por Mes 2025 (Cifras en Millones)" headers={debtService2025Headers} rows={debtService2025Rows} />
         <StatCard title="Deuda Sobretasa a la Gasolina">
-            <p>Metrocali tiene autorizado mediante Acuerdo 180 de 2020 un cupo de <strong className="text-purple-600">$300,000 millones</strong> con fuente de financiación Sobretasa a la Gasolina.</p>
+            <p>Metrocali tiene autorizado mediante Acuerdo 180 de 2020 un cupo de <strong className="text-[#0A2A6A]text-purple-600">$300,000 millones</strong> con fuente de financiación Sobretasa a la Gasolina.</p>
         </StatCard>
         <DataTable title="Proyección Deuda Sobretasa a la Gasolina (2026-2031)" headers={surchargeDebtHeaders1} rows={surchargeDebtRows1} />
         <DataTable title="Proyección Deuda Sobretasa a la Gasolina (2032-2036)" headers={surchargeDebtHeaders2} rows={surchargeDebtRows2} />
