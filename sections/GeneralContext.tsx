@@ -9,6 +9,9 @@ import {
   CartesianGrid, Tooltip, Label, LabelList, Cell
 } from 'recharts';
 
+// 👇 IMPORTA la imagen desde /assets (ruta relativa desde /sections)
+import diagramaImg from '../assets/imagen.png';
+
 /** Formatea con 1 decimal y agrega " B" (billones) */
 const formatWithB = (value: number) => `${value.toFixed(1)} B`;
 
@@ -27,7 +30,8 @@ export const GeneralContext: React.FC = () => {
 
   return (
     <div>
-      <h2 className="text-3xl font-bold text-gradient mb-8">
+      {/* Título azul profesional */}
+      <h2 className="text-3xl font-bold mb-8 text-[#0A2A6A]">
         Contexto General y Económico
       </h2>
 
@@ -123,13 +127,14 @@ export const GeneralContext: React.FC = () => {
 
         {/* --- COLUMNA DERECHA --- */}
         <div className="lg:col-span-2">
-          {/* Aquí reemplazamos el SVG por la imagen */}
+          {/* Imagen (importada) en lugar del SVG */}
           <StatCard title="El Estado y las Finanzas Públicas">
             <div className="flex justify-center items-center">
               <img
-                src="/assets/imagen.png"
+                src={diagramaImg}                 // 👈 usa la importación (funciona en Vercel)
                 alt="Diagrama El Estado y las Finanzas Públicas"
                 className="rounded-xl shadow-md border border-gray-200 max-h-[500px] object-contain"
+                loading="lazy"
               />
             </div>
           </StatCard>
