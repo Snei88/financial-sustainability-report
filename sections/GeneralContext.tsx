@@ -191,6 +191,8 @@ export const GeneralContext: React.FC = () => {
             </div>
           </StatCard>
           
+        <div className="my-8" /> {/* ← separador */}
+
           {/* Como se financia el estado */}
           <StatCard title="Como se financia el estado">
             <div className="relative flex justify-center items-center">
@@ -213,7 +215,7 @@ export const GeneralContext: React.FC = () => {
 
         <div>
           <StatCard title="Ingreso Percápita de las Principales Ciudades de Colombia (2025)">
-            <div className="h-[380px]">
+            <div className="h-[340px]">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                   data={data.map(d => ({ name: d.ciudad, perCapita: d.perCapita, icon: d.icon }))}
