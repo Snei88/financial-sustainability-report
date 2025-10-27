@@ -86,7 +86,7 @@ export const OtherReportsDashboard: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <StatCard title="Tren de Cercanías - Inversión y Financiación">
                         <p>La inversión total se estima en <strong className="text-purple-600">12 billones de pesos</strong>.</p>
-                        <p>Será financiada mediante un convenio donde la Nación asume el <strong className="text-green-600">70%</strong> y las entidades territoriales el <strong className="text-blue-600">30%</strong>.</p>
+                        <p>Será financiada mediante un convenio donde la Nación asume el <strong className="text-green-600">70%</strong> y Gestión Eficiente de Recursos el <strong className="text-blue-600">30%</strong>.</p>
                         <p>Para Cali, esta participación equivale a aproximadamente <strong className="text-amber-600">$345.600 millones</strong>, lo que representa un riesgo para la sostenibilidad financiera del Distrito.</p>
                     </StatCard>
                     <StatCard title="Tren de Cercanías - Aportes del Distrito">

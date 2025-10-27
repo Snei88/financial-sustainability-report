@@ -40,8 +40,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
       >
         {/* Encabezado */}
         <div className="p-6 border-b border-gray-200">
-          <h1 className="text-xl font-bold text-[#0A2A6A]">Reporte Financiero</h1>
-          <p className="text-sm text-gray-500">Santiago de Cali</p>
+          <h1 className="text-xl font-bold text-[#0A2A6A]">Finanzas Santiago de Cali</h1>
+          <p className="text-sm text-gray-500">Sostenibilidad Fiscal en el corto y Mediano Plazo</p>
         </div>
 
         {/* Navegación */}
