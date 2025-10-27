@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { StatCard } from '../components/StatCard';
 import {
   Landmark, Users, Scale,
-  DollarSign, TrendingUp, PiggyBank, Briefcase, ZoomIn
+  DollarSign, TrendingUp, PiggyBank, Briefcase, ZoomIn,
+  Info, Lightbulb, BarChart as BarChartIcon
 } from 'lucide-react';
 import {
   ResponsiveContainer, BarChart, Bar, XAxis, YAxis,
@@ -271,9 +272,49 @@ export const GeneralContext: React.FC = () => {
               </ResponsiveContainer>
             </div>
           </StatCard>
+
+          <div className="my-8" /> {/* ← separador */}
+
+
+          <StatCard title="Tendencia Fiscal y Hallazgos Clave">
+            <div className="space-y-5 text-gray-700">
+              <div className="flex items-start space-x-3">
+                <TrendingUp className="text-blue-500 mt-1" />
+                <p>
+                  Los ingresos crecen de forma sostenida (~5% anual), mostrando
+                  estabilidad pero sin innovación tributaria ni nuevas fuentes de
+                  recaudo.
+                </p>
+              </div>
+
+              <div className="flex items-start space-x-3">
+                <Info className="text-orange-500 mt-1" />
+                <p>
+                  En 2026 se observa un salto inusual en las proyecciones,
+                  principalmente por ajustes contables o estimaciones optimistas.
+                </p>
+              </div>
+
+              <div className="flex items-start space-x-3">
+                <Lightbulb className="text-yellow-500 mt-1" />
+                <p>
+                  El patrón es lineal y predecible, con baja autonomía fiscal y sin
+                  evidencia de políticas diferenciales o diversificación económica.
+                </p>
+              </div>
+
+              <div className="flex items-start space-x-3">
+                <BarChartIcon className="text-green-500 mt-1" />
+                <p>
+                  <strong>Interpretación:</strong> crecimiento moderado, alta
+                  dependencia de transferencias y baja capacidad de ajuste ante
+                  choques. Se recomienda fortalecer el esfuerzo fiscal local y
+                  diversificar ingresos sostenibles.
+                </p>
+              </div>
+            </div>
+          </StatCard>
         </div>
-
-
       </div>
       {/* Modal para mostrar imagen en grande */}
       {modalOpen && (
