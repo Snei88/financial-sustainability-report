@@ -4,6 +4,7 @@ import {
   LayoutDashboard, Wallet, TrendingUp, Landmark, BarChart3,
   FileText, Menu, X, Globe, Banknote, Building
 } from 'lucide-react';
+import { ReporteGerencial } from './sections/ReporteGerencial';
 import { IncomeDashboard } from './sections/IncomeDashboard';
 import { ExpensesDashboard } from './sections/ExpensesDashboard';
 import { FiscalPerformanceDashboard } from './sections/FiscalPerformanceDashboard';
@@ -26,7 +27,10 @@ type Section =
   | 'decentralized'
   | 'other';
 
-const sectionComponents: Record<Section, React.FC> = {
+// Añadido: nueva sección 'reporteGerencial'
+type ExtendedSection = Section | 'reporteGerencial';
+
+const sectionComponents: Record<ExtendedSection, React.FC> = {
   context: GeneralContext,
   macroeconomic: MacroeconomicContext,
   income: IncomeDashboard,
@@ -36,10 +40,11 @@ const sectionComponents: Record<Section, React.FC> = {
   debt: DebtServiceDashboard,
   decentralized: DecentralizedSectorDashboard,
   other: OtherReportsDashboard,
+  reporteGerencial: ReporteGerencial,
 };
 
 const App: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<Section>('context');
+  const [activeSection, setActiveSection] = useState<ExtendedSection>('context');
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const navItems = [
@@ -52,9 +57,10 @@ const App: React.FC = () => {
     { id: 'debt', label: 'Servicio de la Deuda', icon: Banknote },
     { id: 'decentralized', label: 'Sector Descentralizado', icon: Building },
     { id: 'other', label: 'Otros Reportes', icon: FileText },
+    { id: 'reporteGerencial', label: 'Reporte Gerencial', icon: FileText },
   ];
 
-  const handleSelectSection = (section: Section) => {
+  const handleSelectSection = (section: ExtendedSection) => {
     setActiveSection(section);
     if (window.innerWidth < 768) setSidebarOpen(false);
   };

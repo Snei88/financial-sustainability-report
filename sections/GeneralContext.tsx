@@ -16,6 +16,7 @@ import diagramaImg2 from '../assets/imagen2.jpeg';
 import diagramaImg3 from '../assets/imagen3.jpeg';
 import diagramaImg4 from '../assets/imagen4.jpeg';
 import diagramaImg5 from '../assets/imagen5.png';
+import diagramaImg6 from '../assets/imagen6.jpeg';
 
 
 /** Formatea con 1 decimal y agrega " B" (billones) */
@@ -317,6 +318,26 @@ export const GeneralContext: React.FC = () => {
         </div>
       </div>
       {/* Modal para mostrar imagen en grande */}
+      {/* Imagen6: componente adicional en la parte inferior */}
+      <div className="mt-6">
+        <StatCard title="Imagen 6 - Complementaria">
+          <div className="relative flex justify-center items-center">
+            <img
+              src={diagramaImg6}
+              alt="Imagen 6 complemento"
+              className="rounded-xl shadow-md border border-gray-200 w-full max-h-[500px] object-contain"
+              loading="lazy"
+            />
+            <button
+              onClick={() => openImage(diagramaImg6, 'Imagen 6 complemento')}
+              className="absolute bottom-3 right-3 bg-white/90 hover:bg-white text-gray-700 rounded-full p-2 shadow"
+              aria-label="Ampliar imagen 6"
+            >
+              <ZoomIn size={18} />
+            </button>
+          </div>
+        </StatCard>
+      </div>
       {modalOpen && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
